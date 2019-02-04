@@ -10,6 +10,8 @@
 		5B3416E8220860D100C29E75 /* QuantiRxBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3416DE220860D100C29E75 /* QuantiRxBase.framework */; };
 		5B3416ED220860D100C29E75 /* QuantiRxBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3416EC220860D100C29E75 /* QuantiRxBaseTests.swift */; };
 		5B3416EF220860D100C29E75 /* QuantiRxBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B3416E1220860D100C29E75 /* QuantiRxBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B3416FC2208629F00C29E75 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3416FB2208629F00C29E75 /* RxSwift.framework */; };
+		5B3416FE220862A300C29E75 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3416FD220862A300C29E75 /* RxCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		5B3416E7220860D100C29E75 /* QuantiRxBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuantiRxBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3416EC220860D100C29E75 /* QuantiRxBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantiRxBaseTests.swift; sourceTree = "<group>"; };
 		5B3416EE220860D100C29E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B3416FB2208629F00C29E75 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		5B3416FD220862A300C29E75 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B3416FC2208629F00C29E75 /* RxSwift.framework in Frameworks */,
+				5B3416FE220862A300C29E75 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +62,7 @@
 				5B3416E0220860D100C29E75 /* QuantiRxBase */,
 				5B3416EB220860D100C29E75 /* QuantiRxBaseTests */,
 				5B3416DF220860D100C29E75 /* Products */,
+				5B3416FA2208629F00C29E75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +109,15 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		5B3416FA2208629F00C29E75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B3416FD220862A300C29E75 /* RxCocoa.framework */,
+				5B3416FB2208629F00C29E75 /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -124,6 +140,7 @@
 				5B3416DA220860D100C29E75 /* Sources */,
 				5B3416DB220860D100C29E75 /* Frameworks */,
 				5B3416DC220860D100C29E75 /* Resources */,
+				5B3416FF2208634700C29E75 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -204,6 +221,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B3416FF2208634700C29E75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B3416DA220860D100C29E75 /* Sources */ = {
@@ -364,6 +405,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/QuantiRxBase/SupportingFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -389,6 +434,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/QuantiRxBase/SupportingFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
